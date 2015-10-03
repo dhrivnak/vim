@@ -1,69 +1,34 @@
-" Sets how many lines of history VIM has to remember
-set history=500
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" Always show current position
-set ruler
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch
-
-" No annoying sound or flashes on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-
-" Enable syntax highlighting
-syntax enable
+set nocompatible                " forces Vim features even if they break vi standards
+set ignorecase smartcase        " case-insensitive search unless caps present
+set backspace=indent,eol,start  " make backspace work as it should
+set path=.,../include           " path used with gf and such
+set tabstop=4                   " width of tab
+set shiftwidth=4                " number of spaces to use for each step of autoindent 
+set expandtab                   " turn on expanded tabs (space tabs)
+set smarttab                    " be smart when using tabs
+set linebreak                   " turn on linebreaks that won't split words
+set hlsearch                    " highlight on search
+set incsearch                   " show the first match while typing the search term
+set number                      " turn on line numbers
+set showmatch                   " when bracket is inserted, briefly highlights matching one
+set ruler                       " show the cursor position at the bottom of the window
+set showcmd                     " shows the command while it is being typed
+set visualbell                  " flash instead of beep
+set nobackup                    " no blah~ files
+set wrap                        " line wrap
+set ai                          " auto indent
+set si                          " smart indent
+set history=50                  " sets how many lines of history VIM has to remember
+set autoread                    " set to auto read when a file is changed from the outside
+set magic                       " for regular expressions turn magic on
+set encoding=utf-8              " set the encoding displayed
+set fileencoding=utf-8          " set the encoding written to file
+syntax on                       " syntax coloring
+filetype plugin indent on       " enable filetype plugins
 
 " Set color scheme
 colorscheme desert
 set background=dark
-
-" Set the encoding displayed
-set encoding=utf-8
-
-" Set the encoding written to file
-set fileencoding=utf-8
-
-" Turn backup off (no tilde files)
-set nobackup
-
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs
-set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-
-" Indentation stuff
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
 
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
