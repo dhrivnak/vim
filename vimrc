@@ -3,7 +3,8 @@ set ignorecase smartcase        " case-insensitive search unless caps present
 set backspace=indent,eol,start  " make backspace work as it should
 set path=.,../include           " path used with gf and such
 set tabstop=4                   " width of tab
-set shiftwidth=4                " number of spaces to use for each step of autoindent 
+set softtabstop=4               " makes deleting soft-tabs like deleting real tabs
+set shiftwidth=4                " width of soft-tabs
 set expandtab                   " turn on expanded tabs (space tabs)
 set smarttab                    " be smart when using tabs
 set hlsearch                    " highlight on search
@@ -12,6 +13,7 @@ set number                      " turn on line numbers
 set showmatch                   " when bracket is inserted, briefly highlights matching one
 set ruler                       " show the cursor position at the bottom of the window
 set showcmd                     " shows the command while it is being typed
+set showmode                    " shows the current mode
 set visualbell                  " flash instead of beep
 set nobackup                    " no blah~ files
 set linebreak                   " turn on linebreaks that won't split words
@@ -24,6 +26,11 @@ set autoread                    " set to auto read when a file is changed from t
 set magic                       " for regular expressions turn magic on
 set encoding=utf-8              " set the encoding displayed
 set fileencoding=utf-8          " set the encoding written to file
+set scrolloff=5                 " scroll offset
+set matchpairs+=<:>             " match things other than just parens
+set matchtime=2                 " show matching bracket for 0.2 seconds (while typing)
+set lazyredraw                  " only redraw when needed
+set gdefault                    " default to substitute globally on lines
 syntax on                       " syntax coloring
 filetype plugin indent on       " enable filetype plugins
 
@@ -36,6 +43,18 @@ map k gk
 
 " Allows dot-foo in visual mode
 vnoremap . :norm.<CR>
+
+" No accidental "help" (to do it you can do :help)
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+" Make shifts keep visual selection
+vnoremap < <gv
+vnoremap > >gv
+
+" Easy way to clear highlighting from searches
+nnoremap <leader><space> :noh<cr>
 
 " Reference:
 "
@@ -56,18 +75,33 @@ vnoremap . :norm.<CR>
 " M: move to the middle of the screen
 " L: move to the bottom of the screen
 "
+" %: move to matched parens ([{}])
+"
 " gg: top of file
 " G: bottom of file
 " :<09>: move to line <09>
-" 
+" g;: go to last edited position
+"
 " ^F: page down
 " ^B: page up
 "
 " i: inside (so like cit = change inside XML tag or ci" = change inside " quotes)
 "           (you could also use ci( or ci{ or ci[ for some code stuff)
+"           (cib = change inside block -- VERY NICE)
 "
 " v: visual mode (characters)
 " V: visual mode (lines)
 " ^v: visual block
 "
+" Within visual selection:
+"   >: indent
+"   <: unindent
+"
 " I can also use the 'i' here: vi( vit vi" vi[ etc...
+"
+" ~: change case
+" ^A: increment number
+" ^X: decrement number
+" ==: fix line indent
+"
+" ^P: search backwards for autocomplete (this is the one you want!)
