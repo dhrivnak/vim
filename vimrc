@@ -18,9 +18,9 @@ set visualbell                  " flash instead of beep
 set nobackup                    " no blah~ files
 set linebreak                   " turn on linebreaks that won't split words
 set wrap                        " line wrap
-set wm=2                        " wrap 2 characters from right
-set ai                          " auto indent
-set si                          " smart indent
+set wrapmargin=2                " wrap 2 characters from right
+set autoindent                  " indents like previous line
+set smartindent                 " indents extra after { and stuff
 set history=50                  " sets how many lines of history VIM has to remember
 set autoread                    " set to auto read when a file is changed from the outside
 set magic                       " for regular expressions turn magic on
@@ -31,6 +31,7 @@ set matchpairs+=<:>             " match things other than just parens
 set matchtime=2                 " show matching bracket for 0.2 seconds (while typing)
 set lazyredraw                  " only redraw when needed
 set gdefault                    " default to substitute globally on lines
+set background=dark             " tells vim we have a dark terminal (must be before "syntax on")
 syntax on                       " syntax coloring
 filetype plugin indent on       " enable filetype plugins
 
@@ -55,6 +56,16 @@ vnoremap > >gv
 
 " Easy way to clear highlighting from searches
 nnoremap <leader><space> :noh<cr>
+
+" Shortcuts to do vertical or horizontal splits and switch to them
+nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <leader>h <C-w>s<C-w>j
+
+" Shortcuts to easily move around windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " Reference:
 "
@@ -105,3 +116,10 @@ nnoremap <leader><space> :noh<cr>
 " ==: fix line indent
 "
 " ^P: search backwards for autocomplete (this is the one you want!)
+"
+" :only --> close all other windows
+"
+" gD: go to definition
+" gd: go to [local] definition
+"
+" :%retab --> switch all leading tabs to spaces
