@@ -26,7 +26,7 @@ set autoread                    " set to auto read when a file is changed from t
 set magic                       " for regular expressions turn magic on
 set encoding=utf-8              " set the encoding displayed
 set fileencoding=utf-8          " set the encoding written to file
-set scrolloff=5                 " scroll offset
+set scrolloff=2                 " scroll offset
 set matchpairs+=<:>             " match things other than just parens
 set matchtime=2                 " show matching bracket for 0.2 seconds (while typing)
 set lazyredraw                  " only redraw when needed
@@ -123,3 +123,7 @@ nnoremap <C-l> <C-w>l
 " gd: go to [local] definition
 "
 " :%retab --> switch all leading tabs to spaces
+"
+" In the help:
+"   ^]: follow a |link|
+"   ^t or ^o: go back
